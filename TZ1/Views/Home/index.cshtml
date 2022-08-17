@@ -1,0 +1,38 @@
+﻿<div class="justify-content-end">
+    <input type="text" id="search-text" onkeyup="tableSearch()" />
+</div>
+<div>
+    <table class="table table-striped" id="info-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Capital</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> <a href="/Details/@item.Name">@item.Name</a> </td>
+                    <td>@item.Capital</td>
+                </tr>
+            }
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    function tableSearch() {
+        var phrase = document.getElementById('search-text');
+        var table = document.getElementById('info-table');
+        var regPhrase = new RegExp(phrase.value, 'i');
+        for (var i = 1; i < table.rows.length; i++) {
+            if (regPhrase.test(table.rows[i].cells[0].innerHTML)) {
+                table.rows[i].style.display = "";
+            } else {
+                table.rows[i].style.display = "none";
+            }
+        }
+    }
+</script>

@@ -1,0 +1,31 @@
+﻿<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Region</th>
+            <th>Capital</th>
+            <th>Languages</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Region</td>
+                <td>@item.Capital</td>
+                <td>
+                    @foreach (var i in item.Languages)
+                    {
+
+                        @(i.Name + ",")
+
+                    }
+                </td>
+            </tr>
+        }
+        <tr>
+        </tr>
+    </tbody>
+</table>
